@@ -1,0 +1,46 @@
+<p>produkty works!</p>
+
+
+<div class="main">
+
+
+  <div class="leftDiv"> 
+    <h1>Dodaj produkty</h1>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Podaj nazwe produktu</mat-label>
+      <input matInput name="nazwa_klienta" [(ngModel)]="modele.nazwa_produktu">
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Podaj cene netto za sztuke</mat-label>
+      <input matInput name="nip_klienta" [(ngModel)]="modele.cena_netto_za_sztuke">
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" (click)="postData()">Wyślij</button>
+  
+  </div>
+
+<table mat-table [dataSource]="data" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id_produktu}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="nazwa">
+      <th mat-header-cell *matHeaderCellDef> Nazwa produktu </th>
+      <td mat-cell *matCellDef="let element"> {{element.nazwa_produktu}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cena">
+      <th mat-header-cell *matHeaderCellDef> Cena netto za sztuke </th>
+      <td mat-cell *matCellDef="let element"> {{element.cena_netto_za_sztuke}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+</div>

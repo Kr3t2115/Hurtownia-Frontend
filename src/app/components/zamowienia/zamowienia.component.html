@@ -1,0 +1,98 @@
+<p>zamowienia works!</p>
+
+
+
+<div class="main">
+
+
+  <div class="leftDiv"> 
+    <h1>Dodaj Zamowenie</h1>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Podaj klienta</mat-label>
+      <mat-select  [(ngModel)]="modele.id_klienta"> 
+        <mat-option *ngFor="let klienci of Kliencidata" [value]="klienci.id_klienta">
+          {{klienci.nazwa_klienta}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+      
+    <mat-form-field appearance="fill">
+      <mat-label>Podaj produkt</mat-label>
+      <mat-select [(ngModel)]="modele.id_produktu">
+        <mat-option *ngFor="let produkty of Produktydata" [value]="produkty.id_produktu">
+          {{produkty.nazwa_produktu}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Podaj ilosc</mat-label>
+      <input matInput name="ilosc" [(ngModel)]="modele.ilosc">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="postData()">Wyślij</button>
+  
+  </div>
+
+<table mat-table [dataSource]="data" class="mat-elevation-z8" id="pdfTable" #pdfTable>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="nazwa_klienta">
+      <th mat-header-cell *matHeaderCellDef> Nazwa klienta </th>
+      <td mat-cell *matCellDef="let element"> {{element.nazwa_klienta}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nip">
+      <th mat-header-cell *matHeaderCellDef> Nip klienta </th>
+      <td mat-cell *matCellDef="let element"> {{element.nip_klienta}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="miejscowosc">
+        <th mat-header-cell *matHeaderCellDef> Miejscowosc klienta </th>
+        <td mat-cell *matCellDef="let element"> {{element.miejscowosc_klienta}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="nazwa_produktu">
+        <th mat-header-cell *matHeaderCellDef> Nazwa produktu </th>
+        <td mat-cell *matCellDef="let element"> {{element.nazwa_produktu}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="cena _netto_sztuka">
+        <th mat-header-cell *matHeaderCellDef> Cena netto za sztuke </th>
+        <td mat-cell *matCellDef="let element"> {{element.cena_netto_za_sztuke}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="cena_netto">
+        <th mat-header-cell *matHeaderCellDef> Cena netto  </th>
+        <td mat-cell *matCellDef="let element"> {{element.cena_netto}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="podatek_vat">
+        <th mat-header-cell *matHeaderCellDef> Podatek vat </th>
+        <td mat-cell *matCellDef="let element"> {{element.podatek_vat}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="cena_brutto">
+        <th mat-header-cell *matHeaderCellDef> Cena brutto </th>
+        <td mat-cell *matCellDef="let element"> {{element.cena_brutto}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="pobierzPDF">
+      <th mat-header-cell *matHeaderCellDef> Faktura w PDF </th>
+      <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click)="getFaktura(element.id,element.nazwa_klienta,element.nip_klienta,element.miejscowosc_klienta,element.nazwa_produktu,element.cena_netto_za_sztuke,element.cena_netto,element.podatek_vat,element.cena_brutto)">Wyślij</button> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+  
+</div>

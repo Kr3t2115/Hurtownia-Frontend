@@ -1,0 +1,20 @@
+.main {
+    width: 100%;
+}
+
+.mat-elevation-z8 {
+    width: 75%;
+    float: left;
+    height: 100%;
+}
+.leftDiv {
+    width: 25%;
+    height: 100%;
+    float: left;
+    background-color: rgb(216, 198, 198);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+}
